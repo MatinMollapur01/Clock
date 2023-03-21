@@ -1,0 +1,65 @@
+
+1. Create a new Django project and app using the following commands in your terminal:
+
+```
+django-admin startproject clock_project
+cd clock_project
+python manage.py startapp clock
+```
+
+2. Define a view in the `clock/views.py` file that gets the current time and renders a template:
+
+```python
+from django.shortcuts import render
+import time
+
+def clock(request):
+    current_time = time.strftime("%H:%M:%S")
+    context = {"current_time": current_time}
+    return render(request, "clock.html", context)
+```
+
+3. Create a new template in the `clock/templates` directory called `clock.html`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clock</title>
+</head>
+<body>
+    <h1>{{ current_time }}</h1>
+</body>
+</html>
+```
+
+This template simply displays the current time in a large header. The `{{ current_time }}` syntax is used to insert the value of the `current_time` variable passed from the view.
+
+4. Define a URL pattern in the `clock/urls.py` file that maps to the `clock` view:
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("", views.clock, name="clock"),
+]
+```
+
+5. Add the `clock` app to the `INSTALLED_APPS` list in the `clock_project/settings.py` file:
+
+```python
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "clock",
+]
+```
+
+6. Run the development server using `python manage.py runserver` and visit `http://localhost:8000` in your browser. You should see the current time displayed on the page.
+
+I hope this helps! Let me know if you have any questions.
