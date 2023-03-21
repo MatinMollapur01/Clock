@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clock</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>{{ current_time }}</h1>
+</body>
+</html>
