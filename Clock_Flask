@@ -1,0 +1,9 @@
+app = Flask(__name__)
+
+@app.route("/")
+def clock():
+    current_time = time.strftime("%H:%M:%S")
+    return render_template("clock.html", current_time=current_time)
+
+if __name__ == "__main__":
+    app.run(debug=True)
